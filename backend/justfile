@@ -1,0 +1,35 @@
+set shell := ["powershell.exe", "-c"]
+
+poetry := "python3.13 -m poetry"
+
+# Default task: List all available tasks
+default:
+  @just --list
+
+# Create the virtual environment using Poetry
+venv path:
+  {{poetry}} env use path
+
+# Install dependencies using Poetry
+install:
+  {{poetry}} install
+
+# Update dependencies using Poetry
+update:
+  {{poetry}} update
+
+# Activate the virtual environment using Poetry
+activate:
+  {{poetry}} env activate
+
+# Run tests using Pytest
+tests:
+  {{poetry}} run pytest
+
+# Run specific test using Pytest
+test path:
+  {{poetry}} run pytest path
+
+# Run the application
+run:
+  {{poetry}} run python main.py
